@@ -1,9 +1,5 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meals/models/category_model.dart';
-import 'package:meals/pages/categories/categories_meals_page.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
@@ -14,14 +10,19 @@ class CategoryItem extends StatelessWidget {
   });
 
   void _selectCategory(BuildContext context) {
-    Navigator.of(context).push(
-      Platform.isIOS
-          ? CupertinoPageRoute(
-              builder: (_) => CategoriesMealsPage(category: category),
-            )
-          : MaterialPageRoute(
-              builder: (_) => CategoriesMealsPage(category: category),
-            ),
+    // Navigator.of(context).push(
+    //   Platform.isIOS
+    //       ? CupertinoPageRoute(
+    //           builder: (_) => CategoriesMealsPage(category: category),
+    //         )
+    //       : MaterialPageRoute(
+    //           builder: (_) => CategoriesMealsPage(category: category),
+    //         ),
+    // );
+
+    Navigator.of(context).pushNamed(
+      'categories-meals',
+      arguments: category,
     );
   }
 
