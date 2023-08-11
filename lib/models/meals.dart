@@ -2,6 +2,8 @@ enum Complexity {
   simple,
   challenging,
   hard,
+  medium,
+  difficult,
 }
 
 enum Cost {
@@ -40,4 +42,34 @@ class Meal {
     required this.isVegan,
     required this.isVegetarian,
   });
+
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.simple:
+        return 'Simples';
+      case Complexity.challenging:
+        return 'Normal';
+      case Complexity.hard:
+        return 'Muito Dificil';
+      case Complexity.medium:
+        return 'Medio';
+      case Complexity.difficult:
+        return 'Dificil';
+      default:
+        return 'Desconhecido';
+    }
+  }
+
+  String get costText {
+    switch (cost) {
+      case Cost.cheap:
+        return 'Barato';
+      case Cost.fair:
+        return 'Justo';
+      case Cost.expensive:
+        return 'Caro';
+      default:
+        return 'Desconhecido';
+    }
+  }
 }
