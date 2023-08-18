@@ -3,8 +3,11 @@ import 'package:meals/components/main_drawer.dart';
 import 'package:meals/models/settings.dart';
 
 class SettingsPage extends StatefulWidget {
+  final Function(Settings) onSettingsChanged;
+
   const SettingsPage({
     super.key,
+    required this.onSettingsChanged,
   });
 
   @override
@@ -24,7 +27,10 @@ class _SettingsPageState extends State<SettingsPage> {
       title: Text(title),
       subtitle: Text(subtitle),
       value: value,
-      onChanged: onChanged,
+      onChanged: (value) {
+        onChanged(value);
+        widget.onSettingsChanged(settings);
+      },
     );
   }
 
