@@ -4,9 +4,11 @@ import 'package:meals/models/settings.dart';
 
 class SettingsPage extends StatefulWidget {
   final Function(Settings) onSettingsChanged;
+  final Settings settings;
 
   const SettingsPage({
     super.key,
+    required this.settings,
     required this.onSettingsChanged,
   });
 
@@ -15,7 +17,13 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  final Settings settings = Settings();
+  late Settings settings;
+
+  @override
+  void initState() {
+    settings = widget.settings;
+    super.initState();
+  }
 
   Widget _createSwitch(
     String title,
